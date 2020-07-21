@@ -51,7 +51,7 @@
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
         "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
         "type-check": "tsc --noEmit",
-        "start": "webpack-dev-server --config webpack.config.js --env.development --env.watch --progress --colors",
+        "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js --env.target=local --env.watch --progress --colors",
         "build": "webpack --config webpack.config.js --env.production --progress --colors"
     }
 }

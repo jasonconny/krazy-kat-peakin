@@ -13,7 +13,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV;
 
-module.exports = (env={}) => {
+module.exports = async (env= {}) => {
     console.log(`target env: ${env.target}`);
     console.log(`nodeEnv: ${nodeEnv}`);
 
