@@ -1,7 +1,21 @@
 {
-  "name": "krazy-kat-peekin",
-  "version": "0.0.1",
-  "description": "A lightweight boilerplate for React with TypeScript",
-  "author": "Jason Conny",
-  "license": "MIT"
+    "name": "krazy-kat-peekin",
+    "version": "0.0.1",
+    "description": "A lightweight boilerplate for React with TypeScript",
+    "repository": "git@github.com:jasonconny/krazy-kat-peekin.git",
+    "author": "Jason Conny <jasonconny@gmail.com>",
+    "license": "MIT",
+    "browserslist": [
+        "> 2% in US or last 2 versions",
+        "not dead"
+    ],
+    "devDependencies": {
+        "@types/react": "^16.9.43",
+        "@types/react-dom": "^16.9.8",
+        "typescript": "^3.9.7"
+    },
+    "dependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
+    }
 }
