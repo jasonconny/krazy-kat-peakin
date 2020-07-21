@@ -6,6 +6,9 @@ const safePostCssParser = require('postcss-safe-parser');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const CaseSensitivePathsWebpackPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV;
@@ -136,12 +139,30 @@ module.exports = (env={}) => {
             rules: [
                 {
                     oneOf: [
+                        // "url" loader works just like "file" loader but it also embeds
+                        // assets smaller than specified size as data URLs to avoid requests.
+                        {
+                            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                            loader: require.resolve('url-loader'),
+                            options: {
+                                limit: 10000,
+                                name: 'static/media[name].[hash:8].[ext]'
+                            }
+                        },
                         // Transpile TypeScript
                         {
                             test: /\.(ts|tsx)$/,
                             include: path.resolve(__dirname, 'src'),
                             loader: require.resolve('babel-loader')
                         },
+                        // default file loader
+                        {
+                            exclude: [/\.(js|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+                            loader: require.resolve('file-loader'),
+                            options: {
+                                name: 'static/media/[name].[hash:8].[ext]'
+                            }
+                        }
                     ]
                 }
             ]
@@ -158,6 +179,10 @@ module.exports = (env={}) => {
                     }
                 ]
             }),
+            new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
+            new webpack.HotModuleReplacementPlugin(),
+            isLocal && new CaseSensitivePathsWebpackPlugin(),
+            isLocal && new WatchMissingNodeModulesPlugin(path.resolve(__dirname, 'node_modules')),
             new ForkTsCheckerWebpackPlugin()
         ].filter(Boolean)
     }
