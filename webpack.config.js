@@ -17,7 +17,7 @@ module.exports = (env={}) => {
     const isLocal = env.target === 'local';
     const isProd = env.target === 'prod';
 
-    const htmlPluginOptions = Object.assign(
+    const htmlWebpackPluginOptions = Object.assign(
         {},
         {
             chunks: ['krazyKatPeekin'],
@@ -38,8 +38,7 @@ module.exports = (env={}) => {
                 minifyURLs: true,
             },
         } : undefined
-    )
-
+    );
 
     return {
         mode: nodeEnv,
@@ -75,7 +74,7 @@ module.exports = (env={}) => {
             publicPath: '/',
         },
         optimization: {
-            minimize: false,
+            minimize: isProd,
             minimizer: [
                 new TerserPlugin({
                     terserOptions: {
@@ -133,6 +132,7 @@ module.exports = (env={}) => {
             ]
         },
         module: {
+            strictExportPresence: true,
             rules: [
                 {
                     oneOf: [
@@ -140,14 +140,7 @@ module.exports = (env={}) => {
                         {
                             test: /\.(ts|tsx)$/,
                             include: path.resolve(__dirname, 'src'),
-                            use: [
-                                {
-                                    loader: require.resolve('ts-loader'),
-                                    options: {
-                                        transpileOnly: true,
-                                    }
-                                }
-                            ]
+                            loader: require.resolve('babel-loader')
                         },
                     ]
                 }
@@ -156,7 +149,7 @@ module.exports = (env={}) => {
         plugins: [
             new webpack.ProgressPlugin(),
             new CleanWebpackPlugin(),
-            new HtmlWebpackPlugin(htmlPluginOptions),
+            new HtmlWebpackPlugin(htmlWebpackPluginOptions),
             new CopyWebpackPlugin({
                 patterns: [
                     {
