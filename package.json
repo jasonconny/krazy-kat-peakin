@@ -12,10 +12,25 @@
     "devDependencies": {
         "@types/react": "^16.9.43",
         "@types/react-dom": "^16.9.8",
-        "typescript": "^3.9.7"
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^6.0.3",
+        "fork-ts-checker-webpack-plugin": "^5.0.7",
+        "html-webpack-plugin": "^4.3.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
+        "postcss-safe-parser": "^4.0.2",
+        "terser-webpack-plugin": "^3.0.7",
+        "ts-loader": "^8.0.1",
+        "typescript": "^3.9.7",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
     },
     "dependencies": {
         "react": "^16.13.1",
         "react-dom": "^16.13.1"
+    },
+    "scripts": {
+        "start": "webpack-dev-server --config webpack.config.js --env.development --env.watch --progress --colors",
+        "build": "webpack --config webpack.config.js --env.production --progress --colors"
     }
 }
