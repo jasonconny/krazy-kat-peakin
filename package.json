@@ -20,10 +20,16 @@
         "@babel/preset-typescript": "^7.10.4",
         "@types/react": "^16.9.43",
         "@types/react-dom": "^16.9.8",
+        "@typescript-eslint/eslint-plugin": "^3.7.0",
+        "@typescript-eslint/parser": "^3.7.0",
         "babel-loader": "^8.1.0",
         "case-sensitive-paths-webpack-plugin": "^2.3.0",
         "clean-webpack-plugin": "^3.0.0",
         "copy-webpack-plugin": "^6.0.3",
+        "eslint": "^7.5.0",
+        "eslint-loader": "^4.0.2",
+        "eslint-plugin-react": "^7.20.3",
+        "eslint-plugin-react-hooks": "^4.0.8",
         "file-loader": "^6.0.0",
         "fork-ts-checker-webpack-plugin": "^5.0.7",
         "html-webpack-plugin": "^4.3.0",
@@ -42,6 +48,9 @@
         "react-dom": "^16.13.1"
     },
     "scripts": {
+        "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+        "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+        "type-check": "tsc --noEmit",
         "start": "webpack-dev-server --config webpack.config.js --env.development --env.watch --progress --colors",
         "build": "webpack --config webpack.config.js --env.production --progress --colors"
     }
