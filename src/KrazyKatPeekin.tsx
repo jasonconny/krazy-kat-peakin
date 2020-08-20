@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Main from './components/Main';
+// import Main from './components/Main';
 
 const KrazyKatPeekin: React.FC = () => {
     return (
-        <>
-            <Main title={'Krazy Kat Peekin'}/>
-        </>
+        <main>
+            <h2>Krazy Kat Peekin'</h2>
+            <h3>Through a lace bandana</h3>
+        </main>
     );
 };
 
