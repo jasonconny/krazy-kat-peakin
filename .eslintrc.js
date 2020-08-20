@@ -20,7 +20,7 @@ module.exports = {
         "@typescript-eslint/no-use-before-define": "error",
         "curly": "error",
         "default-case": "error",
-        "dot-notation": "off",
+        "dot-notation": "error",
         "eol-last": "off",
         "guard-for-in": "error",
         "no-bitwise": "error",
