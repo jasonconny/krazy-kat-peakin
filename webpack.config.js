@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const postcssNormalize = require('postcss-normalize');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -111,6 +112,53 @@ module.exports = async (env={}) => {
                             include: path.resolve(__dirname, 'src'),
                             loader: require.resolve('babel-loader')
                         },
+                        // bundle module specific SCSS
+                        {
+                            test: /\.scss/,
+                            exclude: [/styles.scss/],
+                            use: [
+                                {
+                                    loader: require.resolve('style-loader')
+                                },
+                                {
+                                    loader: require.resolve('@teamsupercell/typings-for-css-modules-loader')
+                                },
+                                {
+                                    loader: require.resolve('css-loader'),
+                                    options: {
+                                        importLoaders: 3,
+                                        sourceMap: true,
+                                        modules: {
+                                            mode: 'local',
+                                            localIdentName: '[name]__[local]--[hash:base64:5]',
+                                            localIdentHashPrefix: 'kkp',
+                                        }
+                                    }
+                                },
+                                {
+                                    loader: require.resolve('postcss-loader'),
+                                    options: {
+                                        sourceMap: true,
+                                        ident: 'postcss',
+                                        plugins: () => [
+                                            postcssNormalize()
+                                        ]
+                                    }
+                                },
+                                {
+                                    loader: require.resolve('resolve-url-loader'),
+                                    options: {
+                                        sourceMap: true
+                                    }
+                                },
+                                {
+                                    loader: require.resolve('sass-loader'),
+                                    options: {
+                                        sourceMap: true
+                                    }
+                                }
+                            ]
+                        },
                         // default file loader
                         {
                             exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
@@ -140,7 +188,10 @@ module.exports = async (env={}) => {
             new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
             new webpack.HotModuleReplacementPlugin(),
             isDev && new CaseSensitivePathsPlugin(),
-            isDev && new WatchMissingNodeModulesPlugin(path.resolve(__dirname, 'node_modules'))
+            isDev && new WatchMissingNodeModulesPlugin(path.resolve(__dirname, 'node_modules')),
+            new webpack.WatchIgnorePlugin([
+                /scss\.d\.ts$/
+            ])
         ].filter(Boolean)
     }
 };
