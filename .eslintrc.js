@@ -42,10 +42,10 @@ module.exports = {
         "sort-keys": "warn",
     },
     "parserOptions": {
-        "project": path.resolve(__dirname, "./tsconfig.json"),
-        "tsconfigRootDir": __dirname,
         "ecmaVersion": 2018,
-        "sourceType": "module"
+        "project": path.resolve(__dirname, "./tsconfig.json"),
+        "sourceType": "module",
+        "tsconfigRootDir": __dirname
     },
     "root": true,
     "parser": "@typescript-eslint/parser",

@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const resolve = require('resolve');
 const postcssNormalize = require('postcss-normalize');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = async (env={}) => {
     console.log(env);
@@ -189,6 +191,20 @@ module.exports = async (env={}) => {
             new webpack.HotModuleReplacementPlugin(),
             isDev && new CaseSensitivePathsPlugin(),
             isDev && new WatchMissingNodeModulesPlugin(path.resolve(__dirname, 'node_modules')),
+            new ForkTsCheckerWebpackPlugin({
+                async: false,
+                eslint: {
+                    enabled: true,
+                    files: ['./src/**/*.ts', './src/**/*.tsx']
+                },
+                typescript: {
+                    configFile: path.resolve(__dirname, 'tsconfig.json'),
+                    diagnosticOptions: {
+                        syntactic: true
+                    },
+                    enabled: true
+                }
+            }),
             new webpack.WatchIgnorePlugin([
                 /scss\.d\.ts$/
             ])
