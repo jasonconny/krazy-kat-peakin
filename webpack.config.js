@@ -40,15 +40,28 @@ module.exports = async (env={}) => {
         devServer: {
             clientLogLevel: 'silent',
             contentBase: './public',
+            historyApiFallback: {
+                disableDotRule: true
+            },
             hot: true,
             port: 3000,
             publicPath: '/',
             watchContentBase: true
         },
         watch: env.watch,
+        watchOptions: {
+            aggregateTimeout: 500,
+            ignored: [
+                'build',
+                'node_modules'
+            ],
+            poll: 1000
+        },
         output: {
+            chunkFilename: 'static/js/[name].chunk.js',
             filename: '[name].js',
-            path: path.resolve(__dirname, 'build')
+            path: path.resolve(__dirname, 'build'),
+            publicPath: '/'
         },
         module: {
             rules: [

@@ -7,6 +7,7 @@ const KrazyKatPeekin: React.FC = () => {
         <main>
             <h2>Krazy Kat Peekin'</h2>
             <h3>Through a lace bandana</h3>
+            <p>Like a one eyed cheshire, like a diamond eyed jack.</p>
         </main>
     );
 };
