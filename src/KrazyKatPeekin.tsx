@@ -6,10 +6,7 @@ const KrazyKatPeekin: React.FC = () => {
     return (
         <main>
             <h2>Krazy Kat Peekin'</h2>
-            <h3>Through a lace bandana</h3>
-            <p>Like a one eyed cheshire, like a diamond eyed jack.</p>
-            <p>A leaf of all colors plays a golden string fiddle</p>
-            <p>To a double-e waterfall over my back</p>
+            <h3>Through a lace bandanna</h3>
         </main>
     );
 };

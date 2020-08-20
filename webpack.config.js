@@ -76,6 +76,18 @@ module.exports = async (env={}) => {
         module: {
             strictExportPresence: true,
             rules: [
+                // lint
+                {
+                    test: /\.(js|jsx|ts|tsx)$/,
+                    enforce: 'pre',
+                    loader: require.resolve('eslint-loader'),
+                    include: path.resolve(__dirname, 'src'),
+                    options: {
+                        eslintPath: require.resolve('eslint'),
+                        formatter: 'stylish',
+                        quiet: true
+                    },
+                },
                 {
                     oneOf: [
                         // Transpile TypeScript
