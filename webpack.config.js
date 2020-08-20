@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -129,14 +129,14 @@ module.exports = async (env={}) => {
                 cleanStaleWebpackAssets: false
             }),
             new HtmlWebpackPlugin(htmlWebpackPluginOptions),
-            new CopyWebpackPlugin({
-                patterns: [
-                    {
-                        from: path.resolve(__dirname, 'public'),
-                        to: path.resolve(__dirname, 'build')
-                    }
-                ]
-            }),
+            // new CopyWebpackPlugin({
+            //     patterns: [
+            //         {
+            //             from: path.resolve(__dirname, 'public'),
+            //             to: path.resolve(__dirname, 'build')
+            //         }
+            //     ]
+            // }),
             new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
             new webpack.HotModuleReplacementPlugin(),
             isDev && new CaseSensitivePathsPlugin(),
