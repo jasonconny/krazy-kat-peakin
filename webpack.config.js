@@ -33,13 +33,14 @@ module.exports = async (env={}) => {
 
     return {
         mode: isDev ? 'development' : 'production',
+        bail: isProd,
         devtool: isDev ? 'inline-source-map' : 'source-map',
         entry: {
             krazyKatPeekin: path.join(__dirname, 'src/KrazyKatPeekin.tsx')
         },
         devServer: {
             clientLogLevel: 'silent',
-            contentBase: './public',
+            contentBase: path.resolve(__dirname, 'public'),
             historyApiFallback: {
                 disableDotRule: true
             },
@@ -63,14 +64,25 @@ module.exports = async (env={}) => {
             path: path.resolve(__dirname, 'build'),
             publicPath: '/'
         },
+        resolve: {
+            extensions: [
+                '.ts',
+                '.tsx',
+                '.js',
+                '.json',
+                '.jsx',
+            ]
+        },
         module: {
+            strictExportPresence: true,
             rules: [
                 {
-                    test: /\.(ts|tsx)$/,
-                    include: path.resolve(__dirname, 'src'),
-                    use: [
+                    oneOf: [
+                        // Transpile TypeScript
                         {
-                            loader: require.resolve('ts-loader')
+                            test: /\.(ts|tsx)$/,
+                            include: path.resolve(__dirname, 'src'),
+                            loader: require.resolve('babel-loader')
                         }
                     ]
                 }
