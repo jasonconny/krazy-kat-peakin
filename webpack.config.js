@@ -1,6 +1,11 @@
 const path = require('path');
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = async (env={}) => {
     console.log(env);
@@ -90,21 +95,52 @@ module.exports = async (env={}) => {
                 },
                 {
                     oneOf: [
+                        // "url" loader works just like "file" loader but it also embeds
+                        // assets smaller than specified size as data URLs to avoid requests.
+                        {
+                            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                            loader: require.resolve('url-loader'),
+                            options: {
+                                limit: 10000,
+                                name: 'static/media[name].[hash:8].[ext]'
+                            }
+                        },
                         // Transpile TypeScript
                         {
                             test: /\.(ts|tsx)$/,
                             include: path.resolve(__dirname, 'src'),
                             loader: require.resolve('babel-loader')
+                        },
+                        // default file loader
+                        {
+                            exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+                            loader: require.resolve('file-loader'),
+                            options: {
+                                name: 'static/media/[name].[hash:8].[ext]'
+                            }
                         }
                     ]
                 }
             ]
         },
         plugins: [
+            new webpack.ProgressPlugin(),
             new CleanWebpackPlugin({
                 cleanStaleWebpackAssets: false
             }),
-            new HtmlWebpackPlugin(htmlWebpackPluginOptions)
+            new HtmlWebpackPlugin(htmlWebpackPluginOptions),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        from: path.resolve(__dirname, 'public'),
+                        to: path.resolve(__dirname, 'build')
+                    }
+                ]
+            }),
+            new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
+            new webpack.HotModuleReplacementPlugin(),
+            isDev && new CaseSensitivePathsPlugin(),
+            isDev && new WatchMissingNodeModulesPlugin(path.resolve(__dirname, 'node_modules'))
         ].filter(Boolean)
     }
 };
