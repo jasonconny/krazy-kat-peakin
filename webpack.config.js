@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const resolve = require('resolve');
 const postcssNormalize = require('postcss-normalize');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
