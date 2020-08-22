@@ -130,6 +130,7 @@ module.exports = async (env={}) => {
                                         importLoaders: 3,
                                         sourceMap: true,
                                         modules: {
+                                            exportLocalsConvention: 'camelCase',
                                             mode: 'local',
                                             localIdentName: '[name]__[local]--[hash:base64:5]',
                                             localIdentHashPrefix: 'kkp',
