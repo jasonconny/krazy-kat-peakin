@@ -1,10 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import GlobalStyles from './components/GlobalStyles';
 import Main from './components/Main';
 
 const KrazyKatPeekin: React.FC = () => {
     return (
-        <Main title={'Krazy Kat Peekin\''}/>
+        <GlobalStyles>
+            <Main title={'Krazy Kat Peekin\''}/>
+        </GlobalStyles>
     );
 };
 
