@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Helmet } from 'react-helmet';
 import GlobalStyles from './components/GlobalStyles';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ScrollToTop from './routes/ScrollToTop';
@@ -7,17 +8,33 @@ import DefaultRoutes from './routes/Default';
 
 const KrazyKatPeekin: React.FC = () => {
     return (
-        <GlobalStyles>
-            <BrowserRouter forceRefresh={false}>
-                <ScrollToTop/>
+        <>
+            <Helmet>
+                <title>Krazy Kat Peakin'</title>
+                <meta property='og:url' content={`/`} />
+                <meta
+                    property='og:description'
+                    content={`Look for a while`}
+                />
+                <meta
+                    property='og:title'
+                    content={`Krazy Kat Peakin'`}
+                />
+                <meta property='og:image' content={`/images/og-image.png`} />
+            </Helmet>
 
-                <Switch>
-                    <Route path={'/'}>
-                        <DefaultRoutes />
-                    </Route>
-                </Switch>
-            </BrowserRouter>
-        </GlobalStyles>
+            <GlobalStyles>
+                <BrowserRouter forceRefresh={false}>
+                    <ScrollToTop/>
+
+                    <Switch>
+                        <Route path={'/'}>
+                            <DefaultRoutes />
+                        </Route>
+                    </Switch>
+                </BrowserRouter>
+            </GlobalStyles>
+        </>
     );
 };
 
