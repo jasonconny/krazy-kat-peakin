@@ -16,6 +16,8 @@ const Header: React.FC<Props> = props => {
                     href={'/home'}
                     format={'full'}
                 />
+
+                <h1>Krazy Kat Peakin'</h1>
             </nav>
 
             {children}
