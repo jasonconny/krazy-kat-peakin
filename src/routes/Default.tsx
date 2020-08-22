@@ -7,7 +7,7 @@ import Loading from '../components/Loading';
 // The value *must* be unique and ideally match the corresponding const/component.
 const LazyHomeView = React.lazy(() =>
     import(
-        '../components/Main'
+        '../views/HomeView'
         /* webpackChunkName: "HomeView" */
     )
 );
