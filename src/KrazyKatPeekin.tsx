@@ -13,7 +13,7 @@ const KrazyKatPeekin: React.FC = () => {
 
                 <Switch>
                     <Route path={'/'}>
-                        <DefaultRoutes/>
+                        <DefaultRoutes />
                     </Route>
                 </Switch>
             </BrowserRouter>
