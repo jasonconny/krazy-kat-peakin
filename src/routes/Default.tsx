@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import GratefulDeadProvider from '../providers/GratefulDeadProvider';
 import Loading from '../components/Loading';
 
 // ATTENTION!!
@@ -17,7 +18,9 @@ const DefaultRoutes: React.FC = () => {
         <React.Suspense fallback={<Loading/>}>
             <Switch>
                 <Route path={'/'}>
-                    <LazyHomeView/>
+                    <GratefulDeadProvider>
+                        <LazyHomeView/>
+                    </GratefulDeadProvider>
                 </Route>
             </Switch>
         </React.Suspense>

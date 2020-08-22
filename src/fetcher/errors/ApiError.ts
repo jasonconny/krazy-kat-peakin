@@ -7,7 +7,7 @@ class ApiError extends Error {
     requestId: string;
     additionalData: Map<string, any>;
 
-    constructor(json: any) {
+    constructor(json: Record<string, any>) {
         super(json.message);
         this.status = json.status;
         this.message = json.logMessage || json.message;

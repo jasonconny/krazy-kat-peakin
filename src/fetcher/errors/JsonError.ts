@@ -5,7 +5,7 @@ class JsonError extends Error {
     message!: string;
     cause: string;
 
-    constructor(json: any, ...params: Record<string, any>[]) {
+    constructor(json: Record<string, any>) {
         super('There was an error connecting to the server.  Are you connected to the internet? (code: JSON)');
         this.cause = json.message;
     }
