@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Loading from '../../Loading';
+import Header from '../Header';
+import Footer from '../Footer';
 import classNames from 'classnames';
 import styles from './PrimaryLayout.scss';
 
@@ -23,9 +25,7 @@ const PrimaryLayout: React.FC<IPrimaryLayoutProps> = props => {
                 Skip to main content
             </a>
 
-            <header>
-                <h1>Header!</h1>
-            </header>
+            <Header/>
 
             <main
                 className={classNames(
@@ -37,9 +37,7 @@ const PrimaryLayout: React.FC<IPrimaryLayoutProps> = props => {
                 {children}
             </main>
 
-            <footer>
-                <h3>Footer!</h3>
-            </footer>
+            <Footer/>
         </>
     );
 };

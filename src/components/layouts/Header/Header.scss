@@ -1,0 +1,17 @@
+@import "../../GlobalStyles/scss/variables/breakpoints";
+@import "../../GlobalStyles/scss/variables/colors";
+
+.block {
+  border-bottom: 1px solid $brand-color-5;
+  padding: .25rem 0;
+}
+
+.nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: $screen-xl;
+  min-width: 20rem;
+  padding: 0 1.5rem;
+}
