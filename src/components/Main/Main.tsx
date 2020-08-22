@@ -2,15 +2,15 @@ import * as React from 'react';
 import styles from './Main.scss';
 
 interface IMainProps {
-    title?: string;
+    siteName?: string;
 }
 
 const Main: React.FC<IMainProps> = props => {
-    const { title } = props;
+    const { siteName } = props;
 
     return (
         <main className={styles.block}>
-            <h2>{title}</h2>
+            <h2>{siteName ? siteName : 'Site name here'}</h2>
         </main>
     );
 };
