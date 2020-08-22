@@ -18,7 +18,9 @@ const DefaultRoutes: React.FC = () => {
         <React.Suspense fallback={<Loading/>}>
             <Switch>
                 <Route path={'/'}>
-                    <ArtistProvider>
+                    <ArtistProvider
+                        artistId={246650}
+                    >
                         <LazyHomeView/>
                     </ArtistProvider>
                 </Route>
