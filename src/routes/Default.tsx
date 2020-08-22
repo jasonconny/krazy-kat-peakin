@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary';
 import ArtistProvider from '../providers/ArtistProvider';
+import ErrorMessage from '../components/ErrorMessage';
 import Loading from '../components/Loading';
 
 // ATTENTION!!
@@ -15,17 +17,19 @@ const LazyHomeView = React.lazy(() =>
 
 const DefaultRoutes: React.FC = () => {
     return (
-        <React.Suspense fallback={<Loading/>}>
-            <Switch>
-                <Route path={'/'}>
-                    <ArtistProvider
-                        artistId={246650}
-                    >
-                        <LazyHomeView/>
-                    </ArtistProvider>
-                </Route>
-            </Switch>
-        </React.Suspense>
+        <ErrorBoundary fallback={<ErrorMessage errorMessageText={null} />}>
+            <React.Suspense fallback={<Loading/>}>
+                <Switch>
+                    <Route path={'/'}>
+                        <ArtistProvider
+                            artistId={246650}
+                        >
+                            <LazyHomeView/>
+                        </ArtistProvider>
+                    </Route>
+                </Switch>
+            </React.Suspense>
+        </ErrorBoundary>
     );
 }
 

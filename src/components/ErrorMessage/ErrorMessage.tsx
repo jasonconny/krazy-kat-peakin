@@ -7,7 +7,7 @@ interface Props {
     errorMessageText: string | null;
 }
 
-export const ErrorMessage : React.FC<Props> = props => {
+export const ErrorMessage: React.FC<Props> = props => {
     const { classname, errorMessageText } = props;
 
     return (

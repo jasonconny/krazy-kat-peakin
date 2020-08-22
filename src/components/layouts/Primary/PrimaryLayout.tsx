@@ -1,5 +1,7 @@
 import * as React from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import Loading from '../../Loading';
+import ErrorMessage from '../../ErrorMessage';
 import Header from '../Header';
 import Footer from '../Footer';
 import classNames from 'classnames';
@@ -17,7 +19,7 @@ const PrimaryLayout: React.FC<IPrimaryLayoutProps> = props => {
     return loading ? (
         <Loading/>
     ) : (
-        <>
+        <ErrorBoundary fallback={<ErrorMessage errorMessageText={null} />}>
             <a
                 href="#main-content"
                 className={styles.skipNavigation}
@@ -38,7 +40,7 @@ const PrimaryLayout: React.FC<IPrimaryLayoutProps> = props => {
             </main>
 
             <Footer/>
-        </>
+        </ErrorBoundary>
     );
 };
 
