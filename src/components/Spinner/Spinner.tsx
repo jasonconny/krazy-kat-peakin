@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './Spinner.scss';
 
 interface Props {
@@ -11,7 +11,7 @@ const Spinner: React.FC<Props> = props => {
 
     return (
         <div
-            className={classnames(
+            className={classNames(
                 styles.block,
                 {[`${styles.blockSmall}`] : small}
             )}

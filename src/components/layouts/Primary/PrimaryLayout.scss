@@ -1,0 +1,27 @@
+.skip-navigation {
+  display: inline-block;
+  left: -100%;
+  padding: .25em;
+  position: fixed;
+  top: 0;
+
+  &:focus {
+    left: 0;
+  }
+}
+
+.main {
+  min-height: 50vh;
+  padding: 1.5rem 2rem;
+
+  section {
+    margin: 0 auto;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    max-width: 75rem;
+
+    *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

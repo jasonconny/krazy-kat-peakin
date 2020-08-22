@@ -4,7 +4,9 @@ import { PrimaryLayout } from '../../components/layouts';
 const HomeView: React.FC = () => {
     return (
         <PrimaryLayout>
-            <h1>Krazy Kat Peakin'</h1>
+            <section>
+                <h1>Krazy Kat Peakin'</h1>
+            </section>
         </PrimaryLayout>
     );
 };
