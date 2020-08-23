@@ -6,7 +6,7 @@ type Member = {
 }
 
 interface Artist {
-    aliases: Array<{}>;
+    aliases: Array<Record<string, unknown>>;
     id: number;
     data_quality: 'Needs Vote';
     members: Array<Member>;

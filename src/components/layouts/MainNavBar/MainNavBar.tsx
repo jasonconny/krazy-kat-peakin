@@ -9,7 +9,7 @@ interface IMainNavBarProps {
     links: Array<MainNavBarLink>
 }
 
-const MainNavBar : React.FC<IMainNavBarProps> = props => {
+const MainNavBar: React.FC<IMainNavBarProps> = props => {
     const { classes, links } = props;
 
     const renderLinks = (links: Array<MainNavBarLink>) => {
