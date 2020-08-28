@@ -18,7 +18,7 @@ module.exports = async (env={}) => {
     const htmlWebpackPluginOptions = Object.assign(
         {},
         {
-            chunks: ['krazyKatPeekin'],
+            chunks: ['krazyKatPeakin'],
             inject: true,
             template: path.resolve(__dirname, 'public/index.html'),
         },
@@ -43,7 +43,7 @@ module.exports = async (env={}) => {
         bail: isProd,
         devtool: isDev ? 'inline-source-map' : 'source-map',
         entry: {
-            krazyKatPeekin: path.join(__dirname, 'src/KrazyKatPeekin.tsx')
+            krazyKatPeakin: path.join(__dirname, 'src/KrazyKatPeakin.tsx')
         },
         devServer: {
             clientLogLevel: 'silent',

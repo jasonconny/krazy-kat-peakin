@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ScrollToTop from './routes/ScrollToTop';
 import DefaultRoutes from './routes/Default';
 
-const KrazyKatPeekin: React.FC = () => {
+const KrazyKatPeakin: React.FC = () => {
     return (
         <>
             <Helmet>
@@ -39,6 +39,6 @@ const KrazyKatPeekin: React.FC = () => {
 };
 
 const rootElement = document.getElementById('krazy-kat-peekin');
-ReactDOM.render(<KrazyKatPeekin/>, rootElement);
+ReactDOM.render(<KrazyKatPeakin/>, rootElement);
 
-export default KrazyKatPeekin;
+export default KrazyKatPeakin;
