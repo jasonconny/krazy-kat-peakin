@@ -54,16 +54,16 @@ module.exports = async (env={}) => {
             hot: true,
             port: 3000,
             publicPath: '/',
-            watchContentBase: true
-        },
-        watch: env.watch,
-        watchOptions: {
-            aggregateTimeout: 500,
-            ignored: [
-                'build',
-                'node_modules'
-            ],
-            poll: 1000
+            watchContentBase: true,
+            watchOptions: {
+                aggregateTimeout: 500,
+                ignored: [
+                    'build/**',
+                    'node_modules/**',
+                    'src/**/*.scss.d.ts'
+                ],
+                poll: 1000
+            },
         },
         output: {
             chunkFilename: 'static/js/[name].chunk.js',
@@ -204,10 +204,7 @@ module.exports = async (env={}) => {
                     },
                     enabled: true
                 }
-            }),
-            new webpack.WatchIgnorePlugin([
-                /scss\.d\.ts$/
-            ])
+            })
         ].filter(Boolean)
     }
 };
