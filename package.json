@@ -44,7 +44,7 @@
         "postcss": "^8.2.8",
         "postcss-loader": "^5.2.0",
         "postcss-normalize": "^9.0.0",
-        "react-dev-utils": "^10.2.1",
+        "react-dev-utils": "^11.0.4",
         "resolve-url-loader": "^3.1.1",
         "sass-loader": "^11.0.1",
         "style-loader": "^2.0.0",
