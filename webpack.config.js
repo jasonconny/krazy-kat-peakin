@@ -143,8 +143,7 @@ module.exports = async (env={}) => {
                                         sourceMap: true,
                                         postcssOptions: {
                                             plugins: [
-                                                ['autoprefixer'],
-                                                postcssNormalize()
+                                                ['postcss-preset-env']
                                             ]
                                         }
                                     }
