@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const postcssPresetEnv = require('postcss-preset-env');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -64,6 +64,7 @@ module.exports = async (env={}) => {
                 poll: 1000
             },
         },
+        target: 'web',
         output: {
             chunkFilename: 'static/js/[name].chunk.js',
             filename: '[name].js',
@@ -173,7 +174,7 @@ module.exports = async (env={}) => {
             ]
         },
         plugins: [
-            new webpack.ProgressPlugin(),
+            // new webpack.ProgressPlugin(),
             new CleanWebpackPlugin({
                 cleanStaleWebpackAssets: false
             }),
@@ -184,7 +185,6 @@ module.exports = async (env={}) => {
                 ]
             }),
             new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
-            new webpack.HotModuleReplacementPlugin(),
             isDev && new CaseSensitivePathsPlugin(),
             isDev && new WatchMissingNodeModulesPlugin(path.resolve(__dirname, 'node_modules')),
             new ForkTsCheckerWebpackPlugin({

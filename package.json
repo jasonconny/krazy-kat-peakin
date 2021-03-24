@@ -1,5 +1,5 @@
 {
-    "name": "krazy-kat-peekin",
+    "name": "krazy-kat-peakin",
     "version": "0.0.1",
     "description": "A lightweight boilerplate for React with TypeScript",
     "repository": "git@github.com:jasonconny/krazy-kat-peekin.git",
@@ -67,7 +67,7 @@
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
         "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
         "type-check": "tsc --noEmit",
-        "start": "webpack serve --config webpack.config.js --env development --progress --color",
+        "start": "webpack serve --config webpack.config.js --env development --hot --progress --color",
         "build": "webpack --config webpack.config.js --env production --progress --color"
     }
 }
