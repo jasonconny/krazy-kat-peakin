@@ -46,7 +46,7 @@ module.exports = async (env={}) => {
             krazyKatPeakin: path.join(__dirname, 'src/KrazyKatPeakin.tsx')
         },
         devServer: {
-            clientLogLevel: 'silent',
+            clientLogLevel: isDev ? 'info' : 'silent',
             contentBase: path.resolve(__dirname, 'public'),
             historyApiFallback: {
                 disableDotRule: true
@@ -56,13 +56,13 @@ module.exports = async (env={}) => {
             publicPath: '/',
             watchContentBase: true,
             watchOptions: {
-                aggregateTimeout: 500,
+                // aggregateTimeout: 500,
                 ignored: [
                     'build/**',
                     'node_modules/**',
                     'src/**/*.scss.d.ts'
-                ],
-                poll: 1000
+                ]
+                // poll: 1000
             },
         },
         output: {
@@ -141,10 +141,12 @@ module.exports = async (env={}) => {
                                     loader: require.resolve('postcss-loader'),
                                     options: {
                                         sourceMap: true,
-                                        ident: 'postcss',
-                                        plugins: () => [
-                                            postcssNormalize()
-                                        ]
+                                        postcssOptions: {
+                                            plugins: [
+                                                ['autoprefixer'],
+                                                postcssNormalize()
+                                            ]
+                                        }
                                     }
                                 },
                                 {
@@ -181,10 +183,7 @@ module.exports = async (env={}) => {
             new HtmlWebpackPlugin(htmlWebpackPluginOptions),
             new CopyWebpackPlugin({
                 patterns: [
-                    {
-                        from: 'public',
-                        to: 'build'
-                    }
+                    {from: 'public', to: 'build'}
                 ]
             }),
             new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
