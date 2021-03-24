@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LogoLink from '../LogoLink';
+import LogoLink from 'components/layouts/LogoLink';
 import styles from './Header.scss';
 
 interface Props {

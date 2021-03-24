@@ -1,5 +1,5 @@
 const path = require('path');
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const postcssPresetEnv = require('postcss-preset-env');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -78,7 +78,8 @@ module.exports = async (env={}) => {
                 '.js',
                 '.json',
                 '.jsx',
-            ]
+            ],
+            modules:  [path.resolve(__dirname, './src'), 'node_modules']
         },
         module: {
             strictExportPresence: true,
@@ -174,7 +175,7 @@ module.exports = async (env={}) => {
             ]
         },
         plugins: [
-            // new webpack.ProgressPlugin(),
+            new webpack.ProgressPlugin(),
             new CleanWebpackPlugin({
                 cleanStaleWebpackAssets: false
             }),

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ArtistContext } from '../../providers/ArtistProvider';
-import { PrimaryLayout } from '../../components/layouts';
+import { ArtistContext } from 'providers/ArtistProvider';
+import { PrimaryLayout } from 'components/layouts';
 
 const HomeView: React.FC = () => {
     const artist = React.useContext(ArtistContext);

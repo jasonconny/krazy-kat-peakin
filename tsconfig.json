@@ -2,7 +2,7 @@
     "compilerOptions": {
         "allowJs": false,
         "allowSyntheticDefaultImports": true,
-        "baseUrl": "/",
+        "baseUrl": "./src",
         "downlevelIteration": true,
         "forceConsistentCasingInFileNames": true,
         "jsx": "react",
@@ -21,7 +21,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "outDir": "build",
-        "rootDir": "src",
+        "rootDirs": ["src"],
         "sourceMap": true,
         "strictNullChecks": true,
         "strictPropertyInitialization": true,

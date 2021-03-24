@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import Loading from '../../Loading';
-import ErrorMessage from '../../ErrorMessage';
-import Header from '../Header';
-import Footer from '../Footer';
+import Loading from 'components/Loading';
+import ErrorMessage from 'components/ErrorMessage';
+import Header from 'components/layouts/Header';
+import Footer from 'components/layouts/Footer';
 import classNames from 'classnames';
 import styles from './PrimaryLayout.scss';
 

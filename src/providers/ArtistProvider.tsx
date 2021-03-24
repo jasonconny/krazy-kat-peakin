@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Fetcher } from '../fetcher';
+import { Fetcher } from 'fetcher';
 
 interface IArtistProviderProps {
     artistId: number;
