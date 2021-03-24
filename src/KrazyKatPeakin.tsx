@@ -38,7 +38,7 @@ const KrazyKatPeakin: React.FC = () => {
     );
 };
 
-const rootElement = document.getElementById('krazy-kat-peekin');
+const rootElement = document.getElementById('krazy-kat-peakin');
 ReactDOM.render(<KrazyKatPeakin/>, rootElement);
 
 export default KrazyKatPeakin;
