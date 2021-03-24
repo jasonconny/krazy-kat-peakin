@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const postcssNormalize = require('postcss-normalize');
+const postcssPresetEnv = require('postcss-preset-env');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -56,13 +56,12 @@ module.exports = async (env={}) => {
             publicPath: '/',
             watchContentBase: true,
             watchOptions: {
-                // aggregateTimeout: 500,
+                aggregateTimeout: 500,
                 ignored: [
-                    'build/**',
                     'node_modules/**',
                     'src/**/*.scss.d.ts'
-                ]
-                // poll: 1000
+                ],
+                poll: 1000
             },
         },
         output: {
@@ -116,7 +115,6 @@ module.exports = async (env={}) => {
                         // bundle module specific SCSS
                         {
                             test: /\.scss/,
-                            exclude: [/styles.scss/],
                             use: [
                                 {
                                     loader: require.resolve('style-loader')
@@ -143,7 +141,7 @@ module.exports = async (env={}) => {
                                         sourceMap: true,
                                         postcssOptions: {
                                             plugins: [
-                                                ['postcss-preset-env']
+                                                [postcssPresetEnv]
                                             ]
                                         }
                                     }
