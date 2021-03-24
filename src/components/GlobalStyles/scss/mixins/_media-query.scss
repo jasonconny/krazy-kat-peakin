@@ -1,7 +1,5 @@
 // _media-term.scss
 
-// TODO: Update to handle max and mix width or start using library
-
 @mixin media-query-max($width) {
   @media screen and (max-width: $width) {
     @content;
