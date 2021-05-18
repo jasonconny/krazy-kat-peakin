@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ArtistContext } from 'providers/ArtistProvider';
 import { PrimaryLayout } from 'components/layouts';
+import List from 'components/List';
 import ArtistCard from 'components/ArtistCard';
 
 const HomeView: React.FC = () => {
@@ -11,9 +12,9 @@ const HomeView: React.FC = () => {
             <section>
                 <h2>{artist?.name}</h2>
 
-                <ul>
-                    {artist && artist.members.length > 0 ? (
-                        artist.members
+                {artist && artist.members.length > 0 ? (
+                    <List>
+                        {artist.members
                             .filter(member => !!member)
                             .map((member) => (
                                 <li key={member.id}>
@@ -25,8 +26,9 @@ const HomeView: React.FC = () => {
                                     />
                                 </li>
                             ))
-                    ) : null}
-                </ul>
+                        }
+                    </List>
+                ) : null}
             </section>
         </PrimaryLayout>
     );

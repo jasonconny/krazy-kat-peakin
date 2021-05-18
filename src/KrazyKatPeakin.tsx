@@ -11,16 +11,16 @@ const KrazyKatPeakin: React.FC = () => {
         <>
             <Helmet>
                 <title>Krazy Kat Peakin'</title>
-                <meta property='og:url' content={`/`} />
+                <meta property='og:url' content={'/'} />
                 <meta
                     property='og:description'
-                    content={`Look for a while`}
+                    content={'Look for a while'}
                 />
                 <meta
                     property='og:title'
-                    content={`Krazy Kat Peakin'`}
+                    content={'Krazy Kat Peakin\''}
                 />
-                <meta property='og:image' content={`/images/og-image.png`} />
+                <meta property='og:image' content={'/images/og-image.png'} />
             </Helmet>
 
             <GlobalStyles>
