@@ -5,7 +5,7 @@ type Member = {
     resourceUrl?: string;
 }
 
-interface Artist {
+interface IArtist {
     aliases: Array<Record<string, unknown>>;
     id: number;
     data_quality: 'Needs Vote';

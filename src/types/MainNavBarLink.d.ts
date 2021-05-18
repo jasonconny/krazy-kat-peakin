@@ -1,4 +1,4 @@
-type MainNavBarLink = {
+interface IMainNavBarLink {
     name: string,
     path: string
 }

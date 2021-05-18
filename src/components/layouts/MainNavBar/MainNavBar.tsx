@@ -5,14 +5,14 @@ import styles from './MainNavBar.scss';
 
 
 interface IMainNavBarProps {
-    classes?: string,
-    links: Array<MainNavBarLink>
+    className?: string,
+    links: Array<IMainNavBarLink>
 }
 
 const MainNavBar: React.FC<IMainNavBarProps> = props => {
-    const { classes, links } = props;
+    const { className, links } = props;
 
-    const renderLinks = (links: Array<MainNavBarLink>) => {
+    const renderLinks = (links: Array<IMainNavBarLink>) => {
         return links.filter(link => !!link)
             .map((link, index) => {
                 return (
@@ -35,7 +35,7 @@ const MainNavBar: React.FC<IMainNavBarProps> = props => {
     return (
         <nav className={classNames(
             styles.block,
-            {[`${classes}`]: classes}
+            {[`${className}`]: className}
         )}>
             <ul className={styles.list}>
                 {links.length > 0 && renderLinks(links)}

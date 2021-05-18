@@ -3,7 +3,9 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Loading from 'components/Loading';
 import ErrorMessage from 'components/ErrorMessage';
 import Header from 'components/layouts/Header';
+import MainNavBar from 'components/layouts/MainNavBar';
 import Footer from 'components/layouts/Footer';
+import { MainNavBarLinks } from 'config/MainNavBarLinks';
 import classNames from 'classnames';
 import styles from './PrimaryLayout.scss';
 
@@ -27,7 +29,9 @@ const PrimaryLayout: React.FC<IPrimaryLayoutProps> = props => {
                 Skip to main content
             </a>
 
-            <Header/>
+            <Header>
+                <MainNavBar links={MainNavBarLinks} />
+            </Header>
 
             <main
                 className={classNames(
