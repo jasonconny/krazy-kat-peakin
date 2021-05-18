@@ -22,7 +22,6 @@ const HomeView: React.FC = () => {
                                         active={member.active}
                                         id={member.id}
                                         name={member.name}
-                                        resourceUrl={member.resourceUrl}
                                     />
                                 </li>
                             ))

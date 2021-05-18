@@ -56,12 +56,12 @@ module.exports = async (env={}) => {
             publicPath: '/',
             watchContentBase: true,
             watchOptions: {
-                aggregateTimeout: 500,
+                aggregateTimeout: 750,
                 ignored: [
                     'node_modules/**',
                     'src/**/*.scss.d.ts'
                 ],
-                poll: 1000
+                poll: 5000
             },
         },
         target: 'web',

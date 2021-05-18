@@ -2,7 +2,7 @@ type Member = {
     active: boolean;
     id: number;
     name: string;
-    resourceUrl: string;
+    resourceUrl?: string;
 }
 
 interface Artist {
