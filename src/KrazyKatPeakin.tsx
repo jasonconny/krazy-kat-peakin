@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import GlobalStyles from 'components/GlobalStyles';
 import ScrollToTop from 'routes/ScrollToTop';
 import DefaultRoutes from 'routes/Default';
@@ -27,11 +27,7 @@ const KrazyKatPeakin: React.FC = () => {
                 <BrowserRouter forceRefresh={false}>
                     <ScrollToTop/>
 
-                    <Switch>
-                        <Route path={'/'}>
-                            <DefaultRoutes />
-                        </Route>
-                    </Switch>
+                    <DefaultRoutes />
                 </BrowserRouter>
             </GlobalStyles>
         </>

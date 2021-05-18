@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import ArtistProvider from 'providers/ArtistProvider';
 import ErrorMessage from 'components/ErrorMessage';
@@ -20,13 +20,15 @@ const DefaultRoutes: React.FC = () => {
         <ErrorBoundary fallback={<ErrorMessage errorMessageText={null} />}>
             <React.Suspense fallback={<Loading/>}>
                 <Switch>
-                    <Route path={'/'}>
+                    <Route path={'/home'}>
                         <ArtistProvider
                             artistId={246650}
                         >
                             <LazyHomeView/>
                         </ArtistProvider>
                     </Route>
+
+                    <Redirect path={'/'} to={'/home'}/>
                 </Switch>
             </React.Suspense>
         </ErrorBoundary>
