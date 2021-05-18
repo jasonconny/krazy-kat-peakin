@@ -15,16 +15,27 @@ const LazyHomeView = React.lazy(() =>
     )
 );
 
+const LazyMembersView = React.lazy(() =>
+    import(
+        'views/MembersView'
+        /* webpackChunkName: "MembersView" */
+    )
+);
+
 const DefaultRoutes: React.FC = () => {
     return (
         <ErrorBoundary fallback={<ErrorMessage errorMessageText={null} />}>
             <React.Suspense fallback={<Loading/>}>
                 <Switch>
-                    <Route path={'/home'}>
-                        <ArtistProvider artistId={246650}>
-                            <LazyHomeView/>
-                        </ArtistProvider>
-                    </Route>
+                    <ArtistProvider artistId={246650}>
+                        <Route path={'/home'}>
+                            <LazyHomeView />
+                        </Route>
+
+                        <Route path={'/members'}>
+                            <LazyMembersView />
+                        </Route>
+                    </ArtistProvider>
 
                     <Redirect path={'/'} to={'/home'}/>
                 </Switch>
