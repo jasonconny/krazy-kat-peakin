@@ -2,11 +2,11 @@ import * as React from 'react';
 import Copyright from 'components/layouts/Copyright';
 import styles from './Footer.scss';
 
-interface Props {
+interface IFooterProps {
     children?: React.ReactNode;
 }
 
-const Footer: React.FC<Props> = props => {
+const Footer: React.FC<IFooterProps> = props => {
     const { children } = props;
 
     return (

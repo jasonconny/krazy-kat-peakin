@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './MainNavBar.scss';
 
 
@@ -33,9 +33,9 @@ const MainNavBar: React.FC<IMainNavBarProps> = props => {
     };
 
     return (
-        <nav className={classnames(
+        <nav className={classNames(
             styles.block,
-            {[`${classes}`] : props.classes}
+            {[`${classes}`]: classes}
         )}>
             <ul className={styles.list}>
                 {links.length > 0 && renderLinks(links)}
