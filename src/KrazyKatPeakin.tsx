@@ -4,10 +4,13 @@ import { Helmet } from 'react-helmet';
 import { BrowserRouter } from 'react-router-dom';
 import GlobalStyles from 'components/GlobalStyles';
 import ArtistProvider from 'providers/ArtistProvider';
+import ReleasesProvider from 'providers/ReleasesProvider';
 import ScrollToTop from 'routes/ScrollToTop';
 import DefaultRoutes from 'routes/Default';
 
 const KrazyKatPeakin: React.FC = () => {
+    const ARTIST_ID = 246650;
+
     return (
         <>
             <Helmet>
@@ -25,12 +28,14 @@ const KrazyKatPeakin: React.FC = () => {
             </Helmet>
 
             <GlobalStyles>
-                <ArtistProvider artistId={246650}>
-                    <BrowserRouter forceRefresh={false}>
-                        <ScrollToTop/>
+                <ArtistProvider artistId={ARTIST_ID}>
+                    <ReleasesProvider artistId={ARTIST_ID}>
+                        <BrowserRouter forceRefresh={false}>
+                            <ScrollToTop/>
 
-                        <DefaultRoutes />
-                    </BrowserRouter>
+                            <DefaultRoutes />
+                        </BrowserRouter>
+                    </ReleasesProvider>
                 </ArtistProvider>
             </GlobalStyles>
         </>

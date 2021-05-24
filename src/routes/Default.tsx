@@ -28,6 +28,13 @@ const LazyNotFoundView = React.lazy(() =>
     )
 );
 
+const LazyReleasesView = React.lazy(() =>
+    import(
+        'views/ReleasesView'
+        /* webpackChunkName: "ReleasesView" */
+    )
+);
+
 const DefaultRoutes: React.FC = () => {
     return (
         <ErrorBoundary fallback={<ErrorMessage errorMessageText={null} />}>
@@ -41,6 +48,10 @@ const DefaultRoutes: React.FC = () => {
 
                     <Route path={'/members'}>
                         <LazyMembersView />
+                    </Route>
+
+                    <Route path={'/releases'}>
+                        <LazyReleasesView />
                     </Route>
 
                     <Route path={'*'}>

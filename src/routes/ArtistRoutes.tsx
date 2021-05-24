@@ -15,7 +15,7 @@ const LazyHomeView = React.lazy(() =>
 const LazyMembersView = React.lazy(() =>
     import(
         'views/MembersView'
-        /* webpackChunkName: "MembersView" */
+        /* webpackChunkName: "ReleasesView" */
     )
 );
 
