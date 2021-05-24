@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
-import ArtistProvider from 'providers/ArtistProvider';
 import ErrorMessage from 'components/ErrorMessage';
 import Loading from 'components/Loading';
 
@@ -22,22 +21,31 @@ const LazyMembersView = React.lazy(() =>
     )
 );
 
+const LazyNotFoundView = React.lazy(() =>
+    import(
+        'views/NotFoundView'
+        /* webpackChunkName: "NotFoundView" */
+    )
+);
+
 const DefaultRoutes: React.FC = () => {
     return (
         <ErrorBoundary fallback={<ErrorMessage errorMessageText={null} />}>
             <React.Suspense fallback={<Loading/>}>
                 <Switch>
-                    <ArtistProvider artistId={246650}>
-                        <Route path={'/home'}>
-                            <LazyHomeView />
-                        </Route>
+                    <Redirect exact path={'/'} to={'/home'}/>
 
-                        <Route path={'/members'}>
-                            <LazyMembersView />
-                        </Route>
-                    </ArtistProvider>
+                    <Route path={'/home'}>
+                        <LazyHomeView />
+                    </Route>
 
-                    <Redirect path={'/'} to={'/home'}/>
+                    <Route path={'/members'}>
+                        <LazyMembersView />
+                    </Route>
+
+                    <Route path={'*'}>
+                        <LazyNotFoundView />
+                    </Route>
                 </Switch>
             </React.Suspense>
         </ErrorBoundary>

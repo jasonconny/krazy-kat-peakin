@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter } from 'react-router-dom';
 import GlobalStyles from 'components/GlobalStyles';
+import ArtistProvider from 'providers/ArtistProvider';
 import ScrollToTop from 'routes/ScrollToTop';
 import DefaultRoutes from 'routes/Default';
 
@@ -24,11 +25,13 @@ const KrazyKatPeakin: React.FC = () => {
             </Helmet>
 
             <GlobalStyles>
-                <BrowserRouter forceRefresh={false}>
-                    <ScrollToTop/>
+                <ArtistProvider artistId={246650}>
+                    <BrowserRouter forceRefresh={false}>
+                        <ScrollToTop/>
 
-                    <DefaultRoutes />
-                </BrowserRouter>
+                        <DefaultRoutes />
+                    </BrowserRouter>
+                </ArtistProvider>
             </GlobalStyles>
         </>
     );
