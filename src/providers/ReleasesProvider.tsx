@@ -1,17 +1,12 @@
 import * as React from 'react';
 import { Fetcher } from 'fetcher';
 
-interface IReleasesProviderProps {
-    artistId: number;
-    children: React.ReactNode;
-}
-
-export const ReleasesContext = React.createContext([]);
+export const ReleasesContext = React.createContext<IReleasesData | null>(null);
 ReleasesContext.displayName = 'Releases';
 
-const ReleasesProvider: React.FC<IReleasesProviderProps> = props => {
+const ReleasesProvider: React.FC<IProviderProps> = props => {
     const { artistId, children } = props;
-    const [releasesData, setReleasesData] = React.useState([]);
+    const [releasesData, setReleasesData] = React.useState<IReleasesData | null>(null);
 
     React.useEffect(() => {
         (async () => {

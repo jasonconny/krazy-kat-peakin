@@ -3,8 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter } from 'react-router-dom';
 import GlobalStyles from 'components/GlobalStyles';
-import ArtistProvider from 'providers/ArtistProvider';
-import ReleasesProvider from 'providers/ReleasesProvider';
+import KrazyKatProvider from 'providers/KrazyKatProvider';
 import ScrollToTop from 'routes/ScrollToTop';
 import DefaultRoutes from 'routes/Default';
 
@@ -28,15 +27,13 @@ const KrazyKatPeakin: React.FC = () => {
             </Helmet>
 
             <GlobalStyles>
-                <ArtistProvider artistId={ARTIST_ID}>
-                    <ReleasesProvider artistId={ARTIST_ID}>
-                        <BrowserRouter forceRefresh={false}>
-                            <ScrollToTop/>
+                <KrazyKatProvider artistId={ARTIST_ID}>
+                    <BrowserRouter forceRefresh={false}>
+                        <ScrollToTop/>
 
-                            <DefaultRoutes />
-                        </BrowserRouter>
-                    </ReleasesProvider>
-                </ArtistProvider>
+                        <DefaultRoutes />
+                    </BrowserRouter>
+                </KrazyKatProvider>
             </GlobalStyles>
         </>
     );
