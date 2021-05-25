@@ -1,0 +1,9 @@
+@import '../../components/GlobalStyles/scss/variables/colors';
+
+.block {
+  background-color: $neutral-70;
+  border: .0625rem solid $neutral-60;
+  border-radius: .125rem;
+  height: 100%;
+  padding: .25rem;
+}

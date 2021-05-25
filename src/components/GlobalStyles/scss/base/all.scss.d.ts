@@ -1,11 +1,7 @@
 declare namespace AllScssNamespace {
   export interface IAllScss {
-    file: string;
-    mappings: string;
-    names: string;
-    sources: string;
-    sourcesContent: string;
-    version: string;
+    "krazy-kat-peakin": string;
+    krazyKatPeakin: string;
   }
 }
 

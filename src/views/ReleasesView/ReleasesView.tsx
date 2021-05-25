@@ -3,6 +3,8 @@ import { ArtistContext } from 'providers/ArtistProvider';
 import { ReleasesContext } from 'providers/ReleasesProvider';
 import { PrimaryLayout } from 'components/layouts';
 import List from 'components/List';
+import ReleaseCard from 'components/ReleaseCard';
+import styles from './ReleasesView.scss';
 
 const ReleasesView: React.FC = () => {
     const artist = React.useContext(ArtistContext);
@@ -16,12 +18,12 @@ const ReleasesView: React.FC = () => {
                 <h3>Releases</h3>
 
                 {releases && releases.releases.length > 0 ? (
-                    <List>
+                    <List className={styles.list}>
                         {releases.releases
-                            .filter(release => !!release)
+                            .filter(release => !!release && release.type === 'master')
                             .map(release => (
-                                <li key={release.id}>
-                                    {release.title}
+                                <li className={styles.listItem} key={release.id}>
+                                    <ReleaseCard {...release} />
                                 </li>
                             ))
                         }

@@ -2,6 +2,7 @@
 
 p,
 li {
+  color: $neutral-10;
   line-height: 1.375;
 }
 
@@ -11,7 +12,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: inherit;
+  color: $neutral-20;
   font-style: normal;
   font-weight: 600;
   margin: 0 auto 1em;
@@ -58,7 +59,7 @@ strong {
 }
 
 section {
-  *:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 }

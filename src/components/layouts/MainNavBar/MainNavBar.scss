@@ -2,7 +2,6 @@
 @import "../../GlobalStyles/scss/variables/colors";
 
 .block {
-  border-top: 1px solid $brand-color-5;
   padding: 0 2rem;
 }
 
@@ -23,10 +22,22 @@
 }
 
 .link {
+  color: $brand-color-9;
   display: block;
   padding: .5rem 1rem;
 
+  &:hover,
+  &:active {
+    background-color: rgba($brand-color-6, .5);
+  }
+
   &--active {
-    background-color: $brand-color-1;
+    background-color: $brand-color-6;
+    color: $brand-color-10;
+
+    &:hover,
+    &:active {
+      background-color: rgba($brand-color-7, .5);
+    }
   }
 }

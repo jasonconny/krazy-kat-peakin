@@ -4,7 +4,9 @@ interface IPagination {
     page: number;
     pages: number;
     urls: {
-        next: string;
-        last: string;
+        first?: string;
+        last?: string;
+        next?: string;
+        prev?: string;
     }
 }

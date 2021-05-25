@@ -1,6 +1,8 @@
 @import "../../GlobalStyles/scss/variables/colors";
 
 .block {
-  border-top: 1px solid $brand-color-2;
+  background-color: rgba($neutral-70, .5);
+  flex: auto 1 0;
+  min-height: 8rem;
   padding: .5rem 0;
 }
