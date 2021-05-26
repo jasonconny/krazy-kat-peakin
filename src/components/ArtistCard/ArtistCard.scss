@@ -4,11 +4,11 @@
   display: inline-block;
 
   &--active {
-    color: #333333;
+    color: $neutral-50;
   }
 
   &--inactive {
-    color: $neutral-30;
+    color: $neutral-40;
     text-decoration: line-through;
   }
 }
