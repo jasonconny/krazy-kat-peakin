@@ -2,10 +2,18 @@ import * as React from 'react';
 import styles from './ReleaseCard.scss';
 
 const ReleaseCard: React.FC<IRelease | IReleaseMaster> = (props: IRelease | IReleaseMaster) => {
-    const { title } = props;
+    const { thumb, title, year } = props;
     return (
         <div className={styles.block}>
-            <h4>{title}</h4>
+            <img
+                alt={title}
+                className={styles.image}
+                src={thumb}
+            />
+
+            <h4 className={styles.header}>{title}</h4>
+
+            <p>{year}</p>
         </div>
     )
 };

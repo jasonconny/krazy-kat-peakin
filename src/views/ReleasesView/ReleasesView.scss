@@ -4,13 +4,13 @@
 }
 
 .list-item {
-  margin: {
+   margin: {
     bottom: 2rem;
     left: 1.5rem;
   }
-  width: calc(25% - 1.125rem);
+  width: calc(20% - 1.2rem);
 
-  &:nth-child(4n+1) {
+  &:nth-child(5n+1) {
     margin-left: 0;
   }
  }

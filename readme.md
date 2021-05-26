@@ -13,8 +13,6 @@ A lightweight boiler plate for React with TypeScript.
 - [ ] mobile/responsive styles
 - [ ] a11y
 - [ ] forms
-- [ ] cache context so app is less chatty
-- [ ] mock API?
 - [ ] surface API 4** errors to UI
 
 ## Potentially Useful
