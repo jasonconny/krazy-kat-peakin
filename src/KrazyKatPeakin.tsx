@@ -1,11 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
-import { BrowserRouter } from 'react-router-dom';
 import GlobalStyles from 'components/GlobalStyles';
 import KrazyKatProvider from 'providers/KrazyKatProvider';
-import ScrollToTop from 'routes/ScrollToTop';
-import DefaultRoutes from 'routes/Default';
+import AppRouter from 'routes/AppRouter';
 
 const KrazyKatPeakin: React.FC = () => {
     const ARTIST_ID = 246650;
@@ -28,11 +26,7 @@ const KrazyKatPeakin: React.FC = () => {
 
             <GlobalStyles>
                 <KrazyKatProvider artistId={ARTIST_ID}>
-                    <BrowserRouter forceRefresh={false}>
-                        <ScrollToTop/>
-
-                        <DefaultRoutes />
-                    </BrowserRouter>
+                    <AppRouter/>
                 </KrazyKatProvider>
             </GlobalStyles>
         </>
