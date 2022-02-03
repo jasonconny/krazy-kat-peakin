@@ -4,7 +4,7 @@ A lightweight boiler plate for React with TypeScript.
 
 ## Requirements
 
-- Node v14.16.0
+- Node v16.13.2
 - React 17.0.2
 - TypeScript 4.2.3
 
