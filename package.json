@@ -1,6 +1,6 @@
 {
     "name": "krazy-kat-peakin",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A lightweight boilerplate for React with TypeScript",
     "repository": "git@github.com:jasonconny/krazy-kat-peekin.git",
     "author": "Jason Conny <jasonconny@gmail.com>",
