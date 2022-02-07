@@ -15,6 +15,7 @@ const MainNavBar: React.FC<IMainNavBarProps> = props => {
     const renderLinks = (links: Array<IMainNavBarLink>) => {
         return links.filter(link => !!link)
             .map((link, index) => {
+                console.log(link);
                 return (
                     <li
                         className={styles.listItem}
@@ -22,7 +23,10 @@ const MainNavBar: React.FC<IMainNavBarProps> = props => {
                     >
                         <NavLink
                             to={link.path}
-                            className={styles.link}
+                            className={({ isActive}) => classNames(
+                                styles.link,
+                                {[styles.linkActive]: isActive}
+                            )}
                         >
                             {link.name}
                         </NavLink>

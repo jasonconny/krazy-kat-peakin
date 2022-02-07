@@ -7,7 +7,7 @@ import MembersView from 'views/MembersView';
 import ReleasesView from 'views/ReleasesView';
 import NotFoundView from 'views/NotFoundView';
 
-const AppRouter: React.FC = () => (
+const Router: React.FC = () => (
     <BrowserRouter>
         <ScrollToTop/>
 
@@ -23,4 +23,4 @@ const AppRouter: React.FC = () => (
     </BrowserRouter>
 );
 
-export default AppRouter;
+export default Router;
