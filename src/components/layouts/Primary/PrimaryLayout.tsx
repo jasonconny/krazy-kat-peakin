@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { Outlet } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary';
-import Loading from 'components/Loading';
 import ErrorMessage from 'components/ErrorMessage';
 import Header from 'components/layouts/Header';
 import MainNavBar from 'components/layouts/MainNavBar';
@@ -10,17 +10,13 @@ import classNames from 'classnames';
 import styles from './PrimaryLayout.scss';
 
 interface IPrimaryLayoutProps {
-    children: React.ReactNode;
-    loading?: boolean;
     className?: string;
 }
 
 const PrimaryLayout: React.FC<IPrimaryLayoutProps> = props => {
-    const { children, loading, className } = props;
+    const { className } = props;
 
-    return loading ? (
-        <Loading/>
-    ) : (
+    return (
         <ErrorBoundary fallback={<ErrorMessage errorMessageText={null} />}>
             <a
                 href="#main-content"
@@ -40,7 +36,7 @@ const PrimaryLayout: React.FC<IPrimaryLayoutProps> = props => {
                 )}
                 id={'main-content'}
             >
-                {children}
+                <Outlet/>
             </main>
 
             <Footer/>

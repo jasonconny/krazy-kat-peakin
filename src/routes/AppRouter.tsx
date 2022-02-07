@@ -1,13 +1,25 @@
 import * as React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
-import DefaultRoutes from './DefaultRoutes';
+import { PrimaryLayout } from 'components/layouts';
+import HomeView from 'views/HomeView';
+import MembersView from 'views/MembersView';
+import ReleasesView from 'views/ReleasesView';
+import NotFoundView from 'views/NotFoundView';
 
 const AppRouter: React.FC = () => (
     <BrowserRouter>
         <ScrollToTop/>
 
-        <DefaultRoutes/>
+        <Routes>
+            <Route path={'/'} element={<PrimaryLayout/>}>
+                <Route index element={<HomeView/>}/>
+                <Route path={'home'} element={<HomeView/>}/>
+                <Route path={'members'} element={<MembersView/>}/>
+                <Route path={'releases'} element={<ReleasesView/>}/>
+                <Route path={'*'} element={<NotFoundView/>}/>
+            </Route>
+        </Routes>
     </BrowserRouter>
 );
 
