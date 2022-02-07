@@ -1,6 +1,6 @@
 # Krazy Kat Peakin'
 
-A lightweight boiler plate for React with TypeScript.
+A lightweight boilerplate for React with TypeScript.
 
 ## Requirements
 
