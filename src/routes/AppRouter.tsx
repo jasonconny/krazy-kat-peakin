@@ -4,7 +4,7 @@ import ScrollToTop from './ScrollToTop';
 import DefaultRoutes from './DefaultRoutes';
 
 const AppRouter: React.FC = () => (
-    <BrowserRouter forceRefresh={false}>
+    <BrowserRouter>
         <ScrollToTop/>
 
         <DefaultRoutes/>
