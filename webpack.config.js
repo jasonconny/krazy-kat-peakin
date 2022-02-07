@@ -47,23 +47,15 @@ module.exports = async (env={}) => {
             krazyKatPeakin: path.join(__dirname, 'src/KrazyKatPeakin.tsx')
         },
         devServer: {
-            clientLogLevel: isDev ? 'info' : 'silent',
-            contentBase: path.resolve(__dirname, 'public'),
+            client: {
+                logging: isDev ? 'info' : 'silent',
+                progress: isDev
+            },
             historyApiFallback: {
                 disableDotRule: true
             },
             hot: true,
             port: 3000,
-            publicPath: '/',
-            watchContentBase: true,
-            watchOptions: {
-                aggregateTimeout: 750,
-                ignored: [
-                    'node_modules/**',
-                    'src/**/*.scss.d.ts'
-                ],
-                poll: 5000
-            },
         },
         target: 'web',
         output: {
