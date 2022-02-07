@@ -1,12 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
 const postcssPresetEnv = require('postcss-preset-env');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
@@ -79,10 +76,10 @@ module.exports = async (env={}) => {
             rules: [
                 {
                     oneOf: [
-                        // "url" loader works just like "file" loader but it also embeds
+                        // "url" loader works just like "file" loader, but it also embeds
                         // assets smaller than specified size as data URLs to avoid requests.
                         {
-                            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                            test: /\.(bmp|gif|jpg|jpeg|png)$/,
                             loader: require.resolve('url-loader'),
                             options: {
                                 limit: 10000,
@@ -114,7 +111,7 @@ module.exports = async (env={}) => {
                                             exportLocalsConvention: 'camelCase',
                                             mode: 'local',
                                             localIdentName: '[name]__[local]--[hash:base64:5]',
-                                            localIdentHashPrefix: 'kkp',
+                                            localIdentHashSalt: 'kkp',
                                         }
                                     }
                                 },
@@ -145,7 +142,7 @@ module.exports = async (env={}) => {
                         },
                         // default file loader
                         {
-                            exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+                            exclude: /\.(html|js|mjs|json|jsx|ts|tsx)$/,
                             loader: require.resolve('file-loader'),
                             options: {
                                 name: 'static/media/[name].[hash:8].[ext]'
@@ -156,7 +153,6 @@ module.exports = async (env={}) => {
             ]
         },
         plugins: [
-            new webpack.ProgressPlugin(),
             new ESLintPlugin({
                 eslintPath: require.resolve('eslint'),
                 extensions: ['js', 'jsx', 'ts', 'tsx'],
@@ -171,21 +167,14 @@ module.exports = async (env={}) => {
                     {from: 'public', to: 'build'}
                 ]
             }),
-            new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
             isDev && new CaseSensitivePathsPlugin(),
-            isDev && new WatchMissingNodeModulesPlugin(path.resolve(__dirname, 'node_modules')),
             new ForkTsCheckerWebpackPlugin({
                 async: false,
-                eslint: {
-                    enabled: true,
-                    files: ['./src/**/*.ts', './src/**/*.tsx']
-                },
                 typescript: {
                     configFile: path.resolve(__dirname, 'tsconfig.json'),
                     diagnosticOptions: {
                         syntactic: true
-                    },
-                    enabled: true
+                    }
                 }
             })
         ].filter(Boolean)
