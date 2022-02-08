@@ -13,23 +13,18 @@ const Router: React.FC = () => (
     <BrowserRouter>
         <ScrollToTop/>
 
-        <Routes>
-            <Route path={'/'} element={<PrimaryLayout/>}>
-                <Route index element={<HomeView/>}/>
-                <Route path={'home'} element={<HomeView/>}/>
-                <Route path={'members'} element={
-                    <React.Suspense fallback={<Loading/>}>
-                        <LazyMembersView/>
-                    </React.Suspense>
-                }/>
-                <Route path={'releases'} element={
-                    <React.Suspense fallback={<Loading/>}>
-                        <LazyReleasesView/>
-                    </React.Suspense>
-                }/>
-                <Route path={'*'} element={<NotFoundView/>}/>
-            </Route>
-        </Routes>
+        <React.Suspense fallback={<Loading/>}>
+            <Routes>
+                <Route path={'/'} element={<PrimaryLayout/>}>
+                    <Route index element={<HomeView/>}/>
+
+                    <Route path={'members'} element={<LazyMembersView/>}/>
+                    <Route path={'releases'} element={<LazyReleasesView/>}/>
+
+                    <Route path={'*'} element={<NotFoundView/>}/>
+                </Route>
+            </Routes>
+        </React.Suspense>
     </BrowserRouter>
 );
 
