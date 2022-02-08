@@ -22,7 +22,10 @@ const MainNavBar: React.FC<IMainNavBarProps> = props => {
                     >
                         <NavLink
                             to={link.path}
-                            className={styles.link}
+                            className={({ isActive}) => classNames(
+                                styles.link,
+                                {[styles.linkActive]: isActive}
+                            )}
                         >
                             {link.name}
                         </NavLink>

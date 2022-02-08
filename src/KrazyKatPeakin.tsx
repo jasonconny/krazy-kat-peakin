@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import GlobalStyles from 'components/GlobalStyles';
 import KrazyKatProvider from 'providers/KrazyKatProvider';
-import AppRouter from 'routes/AppRouter';
+import Router from 'router/Router';
 
 const KrazyKatPeakin: React.FC = () => {
     const ARTIST_ID = 246650;
@@ -26,7 +26,7 @@ const KrazyKatPeakin: React.FC = () => {
 
             <GlobalStyles>
                 <KrazyKatProvider artistId={ARTIST_ID}>
-                    <AppRouter/>
+                    <Router/>
                 </KrazyKatProvider>
             </GlobalStyles>
         </>
