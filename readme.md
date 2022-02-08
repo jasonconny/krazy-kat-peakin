@@ -6,10 +6,13 @@ A lightweight boilerplate for React with TypeScript.
 
 - Node v16.13.2
 - React 17.0.2
-- TypeScript 4.2.3
+- TypeScript 4.5.5
 
 ## TODO
 
+- [ ] clean up/refactor imports
+- [ ] refactor 'prop' typing and destructing
+- [ ] `useReducer()`?
 - [ ] mobile/responsive styles
 - [ ] a11y
 - [ ] forms
