@@ -10,6 +10,19 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended"
     ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "project": path.resolve(__dirname, "./tsconfig.json"),
+        "sourceType": "module",
+        "tsconfigRootDir": __dirname
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "react",
+        "react-hooks"
+    ],
+    "root": true,
     "rules": {
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/indent": "error",
@@ -42,19 +55,6 @@ module.exports = {
         "react-hooks/exhaustive-deps": "warn",
         "sort-keys": "warn",
     },
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "project": path.resolve(__dirname, "./tsconfig.json"),
-        "sourceType": "module",
-        "tsconfigRootDir": __dirname
-    },
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-        "@typescript-eslint",
-        "react",
-        "react-hooks"
-    ],
     "settings": {
         "react": {
             "version": "detect"

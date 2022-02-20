@@ -13,7 +13,7 @@
 }
 
 .main {
-  min-height: 50vh;
+  min-height: calc(100vh - 14.125rem);
   padding: 1.5rem 0;
 
   section {

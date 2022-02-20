@@ -1,5 +1,7 @@
+@import "../../GlobalStyles/scss/variables/colors";
+
 .block {
-  background: transparent url('logo.png') center/contain no-repeat;
+  background-color: rgba($brand-color-4, .2);
   height: 3.125rem;
   overflow: hidden;
   text-indent: -100%;
