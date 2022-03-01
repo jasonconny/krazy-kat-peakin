@@ -56,6 +56,7 @@ module.exports = async (env={}) => {
         },
         target: 'web',
         output: {
+            assetModuleFilename: 'static/media/[name].[hash:8].[ext]',
             chunkFilename: 'static/js/[name].chunk.js',
             filename: '[name].js',
             path: path.resolve(__dirname, 'build'),
@@ -76,15 +77,10 @@ module.exports = async (env={}) => {
             rules: [
                 {
                     oneOf: [
-                        // "url" loader works just like "file" loader, but it also embeds
-                        // assets smaller than specified size as data URLs to avoid requests.
+                        // Static Files
                         {
-                            test: /\.(bmp|gif|jpg|jpeg|png)$/,
-                            loader: require.resolve('url-loader'),
-                            options: {
-                                limit: 10000,
-                                name: 'static/media[name].[hash:8].[ext]'
-                            }
+                            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/, /\.woff?2$/],
+                            type: 'asset'
                         },
                         // Transpile TypeScript
                         {
@@ -139,14 +135,6 @@ module.exports = async (env={}) => {
                                     }
                                 }
                             ]
-                        },
-                        // default file loader
-                        {
-                            exclude: /\.(html|js|mjs|json|jsx|ts|tsx)$/,
-                            loader: require.resolve('file-loader'),
-                            options: {
-                                name: 'static/media/[name].[hash:8].[ext]'
-                            }
                         }
                     ]
                 }
